@@ -18,12 +18,8 @@ export function MenuItemButton({
   iconSrc,
   isCollapsed,
 }: MenuItemProps) {
-  let iconStyles: string;
-  if (iconSrc === "/icons/arrow-left.svg" && isCollapsed) {
-    iconStyles = `${styles.icon} ${styles.rotate}`;
-  } else {
-    iconStyles = styles.icon;
-  }
+  const doRotate = iconSrc.includes("arrow-left") && isCollapsed ? true : false;
+  const iconStyles = classNames(styles.icon, { [styles.rotate]: doRotate });
 
   return (
     <li className={classNames(styles.listItem, className)}>
