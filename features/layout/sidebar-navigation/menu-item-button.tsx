@@ -18,9 +18,9 @@ export function MenuItemButton({
   iconSrc,
   isCollapsed,
 }: MenuItemProps) {
-  //look to see if we are rendering the arrow icon : gonna change this
+  //look to see if we are rendering the arrow icon
   const doRotate = iconSrc.includes("arrow-left") && isCollapsed ? true : false;
-  //look to see if the side menu is collapsed
+  //if doRotate is true, rotate the icon
   const iconStyles = classNames(styles.icon, { [styles.rotate]: doRotate });
 
   return (
