@@ -39,7 +39,6 @@ export function IssueList() {
     {} as Record<string, ProjectLanguage>,
   );
   const { items, meta } = issuesPage.data || {};
-  console.log(items);
 
   return (
     <div className={styles.container}>
