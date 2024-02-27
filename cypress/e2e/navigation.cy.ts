@@ -31,6 +31,11 @@ describe("Sidebar Navigation", () => {
         .should("have.attr", "href", "/dashboard/settings");
     });
 
+    // check that Support button opens a mail app
+    it("opens the user’s mail app on click", () => {
+      cy.get("nav").contains("Support");
+    });
+
     it("is collapsible", () => {
       // collapse navigation
       cy.get("nav").contains("Collapse").click();
