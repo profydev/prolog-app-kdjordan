@@ -27,6 +27,22 @@ export function Badge({
   size = BadgeSize.md,
   color = BadgeColor.primary,
 }: BadgeProps) {
+  switch (children) {
+    case "Info":
+      color = BadgeColor.success;
+      children = "Stable";
+      break;
+    case "Warning":
+      color = BadgeColor.warning;
+      break;
+    case "Error":
+      color = BadgeColor.error;
+      children = "Critical";
+      break;
+    default:
+      break;
+  }
+
   return (
     <div className={classNames(styles.container, styles[size], styles[color])}>
       {children}
