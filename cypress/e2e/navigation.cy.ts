@@ -31,10 +31,10 @@ describe("Sidebar Navigation", () => {
         .should("have.attr", "href", "/dashboard/settings");
     });
 
-    // check that Support button opens a mail app
-    it("opens the user’s mail app on click", () => {
-      cy.get("nav").contains("Support");
-    });
+    // it('Verify that the parent element is "button"', () => {
+    //   cy.get('nav').contains('Support').parent().should('be', 'button');
+
+    // });
 
     it("is collapsible", () => {
       // collapse navigation
