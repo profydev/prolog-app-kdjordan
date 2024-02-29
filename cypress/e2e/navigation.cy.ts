@@ -29,10 +29,7 @@ describe("Sidebar Navigation", () => {
       cy.get("nav")
         .contains("Settings")
         .should("have.attr", "href", "/dashboard/settings");
-    });
 
-    // check that Support button opens a mail app
-    it("opens the user’s mail app on click", () => {
       cy.get("nav").contains("Support");
     });
 
