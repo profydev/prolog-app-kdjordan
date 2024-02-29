@@ -29,12 +29,9 @@ describe("Sidebar Navigation", () => {
       cy.get("nav")
         .contains("Settings")
         .should("have.attr", "href", "/dashboard/settings");
+
+      cy.get("nav").contains("Support");
     });
-
-    // it('Verify that the parent element is "button"', () => {
-    //   cy.get('nav').contains('Support').parent().should('be', 'button');
-
-    // });
 
     it("is collapsible", () => {
       // collapse navigation
