@@ -27,6 +27,7 @@ export function Badge({
   size = BadgeSize.md,
   color = BadgeColor.primary,
 }: BadgeProps) {
+  // map children to BadgeColor
   switch (children) {
     case "Info":
       color = BadgeColor.success;
