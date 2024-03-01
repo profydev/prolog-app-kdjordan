@@ -12,6 +12,7 @@ describe("Project List", () => {
 
     // wait for request to resolve
     cy.wait("@getProjects");
+    console.log("testing project list");
   });
 
   context("desktop resolution", () => {
