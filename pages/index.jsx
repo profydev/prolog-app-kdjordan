@@ -12,11 +12,11 @@ const IssuesPage = () => {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/icons/logo-large.svg" alt="Prolog logo" />
           </div>
-          <div style={{ paddingRight: ".2rem" }}>
+          <div>
             <TopNavigation />
           </div>
           <div>
-            <Link href={Routes.projects} style={{ paddingRight: ".2rem" }}>
+            <Link href={Routes.projects}>
               <button className={styles.openDashboardButton}>
                 Open Dashboard
               </button>
