@@ -1,5 +1,3 @@
-import Link from "next/link";
-import { Routes } from "../config/routes";
 import styles from "./index.module.scss";
 import TopNavigation from "../features/projects/components/top-navigation/top-navigation";
 
@@ -23,11 +21,9 @@ const IssuesPage = () => {
             <TopNavigation />
           </div>
           <div>
-            <Link href={Routes.projects}>
-              <button className={styles.openDashboardButton}>
-                Open Dashboard
-              </button>
-            </Link>
+            <button className={styles.openDashboardButton}>
+              Open Dashboard
+            </button>
           </div>
         </div>
       </header>
