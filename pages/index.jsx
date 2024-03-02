@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { Routes } from "../config/routes";
 import styles from "./index.module.scss";
 import TopNavigation from "../features/projects/components/top-navigation/top-navigation";
 
@@ -10,20 +12,15 @@ const IssuesPage = () => {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/icons/logo-large.svg" alt="Prolog logo" />
           </div>
-
           <div>
             <TopNavigation />
           </div>
           <div>
             <Link href={Routes.projects}>
-
-          <div>
-            <TopNavigation />
-          </div>
-          <div>
-            <button className={styles.openDashboardButton}>
-              Open Dashboard
-            </button>
+              <button className={styles.openDashboardButton}>
+                Open Dashboard
+              </button>
+            </Link>
           </div>
         </div>
       </header>
