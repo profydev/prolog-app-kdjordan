@@ -1,19 +1,30 @@
-import { Routes } from "@config/routes";
+import Link from "next/link";
+import { Routes } from "../config/routes";
 import styles from "./index.module.scss";
 import TopNavigation from "../features/projects/components/top-navigation/top-navigation";
+
 const IssuesPage = () => {
   return (
     <div>
       <header className={styles.header}>
-        <div>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/icons/logo-large.svg" alt="Prolog logo" />
-        </div>
-        <div>
-          <TopNavigation />
-        </div>
-        <div>
-          <a href={Routes.projects}>Open Dashboard</a>
+        <div className={styles.container}>
+          <div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/icons/logo-large.svg" alt="Prolog logo" />
+          </div>
+          <div style={{ paddingRight: ".2rem" }}>
+            <TopNavigation />
+          </div>
+          <div>
+            <Link href={Routes.projects} style={{ paddingRight: ".2rem" }}>
+              <button className={styles.openDashboardButton}>
+                Open Dashboard
+              </button>
+            </Link>
+          </div>
+          {/* <div style={{paddingRight: '1.2rem'}}>
+            <a href={Routes.projects}>Open Dashboard</a>
+          </div> */}
         </div>
       </header>
       <button
