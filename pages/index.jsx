@@ -1,8 +1,6 @@
 import { Routes } from "@config/routes";
-// import classNames from "classnames";
-import Link from "next/link";
 import styles from "./index.module.scss";
-
+import TopNavigation from "../features/projects/components/top-navigation/top-navigation";
 const IssuesPage = () => {
   return (
     <div>
@@ -12,31 +10,10 @@ const IssuesPage = () => {
           <img src="/icons/logo-large.svg" alt="Prolog logo" />
         </div>
         <div>
-          <ul>
-            <li>
-              <Link className={styles.anchor} href={Routes.home}>
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link className={styles.anchor} href={Routes.products}>
-                Products
-              </Link>
-            </li>
-            <li>
-              <Link className={styles.anchor} href={Routes.documentation}>
-                Documentation
-              </Link>
-            </li>
-            <li>
-              <Link className={styles.anchor} href={Routes.pricing}>
-                Pricing
-              </Link>
-            </li>
-          </ul>
+          <TopNavigation />
         </div>
         <div>
-          <a href={Routes.projects}>Dashboard</a>
+          <a href={Routes.projects}>Open Dashboard</a>
         </div>
       </header>
       <button
