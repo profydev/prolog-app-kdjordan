@@ -22,9 +22,6 @@ const IssuesPage = () => {
               </button>
             </Link>
           </div>
-          {/* <div style={{paddingRight: '1.2rem'}}>
-            <a href={Routes.projects}>Open Dashboard</a>
-          </div> */}
         </div>
       </header>
       <button
