@@ -6,76 +6,61 @@
 
 .footerContainer {
   background-color: color.$gray-50;
-  height: misc.$footer-height;
-  margin-top: -3.75rem;
-  width: 100%; /* Ensure the footer spans the entire width */
+  height: misc.$footer-height-mobile;
   color: color.$gray-400;
 
-  @media (max-width: breakpoint.$desktop) {
-    height: 11rem;
-    margin-top: -9rem;
+  @media (min-width: breakpoint.$desktop) {
+    height: misc.$footer-height;
   }
 
   & .content {
-    width: calc(100% - (4rem));
-    max-width: 1600px;
-    margin: 0 auto;
-    white-space: nowrap;
-    height: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    gap: space.$s6;
+    height: 100%;
 
-    @media (max-width: breakpoint.$desktop) {
-      margin-top: -0.4rem;
-      flex-direction: column;
-      justify-content: center;
+    @media (min-width: breakpoint.$desktop) {
+      flex-direction: row;
+      justify-content: space-between;
       align-items: center;
-      height: 100%;
-      width: 100%;
     }
   }
 
   & .info {
-    width: 160px;
+    order: 1;
 
-    @media (max-width: breakpoint.$desktop) {
-      order: 2;
-      width: 100%;
-      text-align: center;
-    }
-  }
-
-  & .logo {
-    width: 160px;
-    text-align: center;
-
-    & img {
-      float: right;
-
-      @media (max-width: breakpoint.$desktop) {
-        float: none;
-        padding-bottom: space.$s5;
-        margin-top: 1rem;
-      }
+    @media (min-width: breakpoint.$desktop) {
+      order: 1;
+      padding-left: space.$s8;
     }
   }
 
   & .links {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 24px;
-    list-style: none;
-    margin-right: space.$s10;
+    justify-content: flex-start;
+    gap: space.$s6;
+
+    @media (min-width: breakpoint.$desktop) {
+      order: 2;
+      padding-right: space.$s20;
+    }
 
     & a {
       color: color.$gray-400;
-    }
 
-    @media (max-width: breakpoint.$desktop) {
-      // margin-top: -1rem;
+      &:hover {
+        color: color.$gray-900;
+      }
+    }
+  }
+
+  & .logo {
+    @media (min-width: breakpoint.$desktop) {
+      order: 3;
+      padding-right: space.$s8;
     }
   }
 }

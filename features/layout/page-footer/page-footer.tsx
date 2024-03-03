@@ -9,22 +9,22 @@ export default function PageFooter() {
     <div className={styles.footerContainer}>
       <div className={styles.content}>
         <div className={styles.info}>Version: {version}</div>
-        <div>
-          <ul className={styles.links}>
-            <li>
-              <Link href="#">Docs</Link>
-            </li>
-            <li>
-              <Link href="#">API</Link>
-            </li>
-            <li>
-              <Link href="#">Help</Link>
-            </li>
-            <li>
-              <Link href="#">Community</Link>
-            </li>
-          </ul>
-        </div>
+
+        <ul className={styles.links}>
+          <li>
+            <Link href="#">Docs</Link>
+          </li>
+          <li>
+            <Link href="#">API</Link>
+          </li>
+          <li>
+            <Link href="#">Help</Link>
+          </li>
+          <li>
+            <Link href="#">Community</Link>
+          </li>
+        </ul>
+
         <div className={styles.logo}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={"/icons/logo-small.svg"} alt="logo" />
