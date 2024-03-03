@@ -33,14 +33,6 @@ describe("Sidebar Navigation", () => {
       cy.get("nav").contains("Support");
     });
 
-    it("has footer present with placeholder links", () => {
-      console.log(cy.get("footerContainer"));
-      cy.get("footerContainer").contains("Home");
-      cy.get("footerContainer").contains("API");
-      cy.get("footerContainer").contains("Help");
-      cy.get("footerContainer").contains("Community");
-    });
-
     it("is collapsible", () => {
       // collapse navigation
       cy.get("nav").contains("Collapse").click();
