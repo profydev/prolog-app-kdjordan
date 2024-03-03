@@ -8,11 +8,11 @@ export default function PageFooter() {
   return (
     <div className={styles.footerContainer}>
       <div className={styles.content}>
-        <div style={{ width: "160px" }}>Version: {version}</div>
+        <div className={styles.info}>Version: {version}</div>
         <div>
-          <ul>
+          <ul className={styles.links}>
             <li>
-              <Link href="#">Home</Link>
+              <Link href="#">Docs</Link>
             </li>
             <li>
               <Link href="#">API</Link>
@@ -25,13 +25,9 @@ export default function PageFooter() {
             </li>
           </ul>
         </div>
-        <div style={{ width: "160px" }}>
+        <div className={styles.logo}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={"/icons/logo-small.svg"}
-            alt="logo"
-            style={{ float: "right" }}
-          />
+          <img src={"/icons/logo-small.svg"} alt="logo" />
         </div>
       </div>
     </div>

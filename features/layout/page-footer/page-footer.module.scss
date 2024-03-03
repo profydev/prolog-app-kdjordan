@@ -11,26 +11,71 @@
   width: 100%; /* Ensure the footer spans the entire width */
   color: color.$gray-400;
 
+  @media (max-width: breakpoint.$desktop) {
+    height: 11rem;
+    margin-top: -9rem;
+  }
+
   & .content {
     width: calc(100% - (4rem));
+    max-width: 1600px;
     margin: 0 auto;
+    white-space: nowrap;
     height: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+
+    @media (max-width: breakpoint.$desktop) {
+      margin-top: -0.4rem;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+    }
   }
 
-  & ul {
+  & .info {
+    width: 160px;
+
+    @media (max-width: breakpoint.$desktop) {
+      order: 2;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  & .logo {
+    width: 160px;
+    text-align: center;
+
+    & img {
+      float: right;
+
+      @media (max-width: breakpoint.$desktop) {
+        float: none;
+        padding-bottom: space.$s5;
+        margin-top: 1rem;
+      }
+    }
+  }
+
+  & .links {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 24px;
     list-style: none;
-    margin-right: 2.5rem;
+    margin-right: space.$s10;
 
     & a {
       color: color.$gray-400;
+    }
+
+    @media (max-width: breakpoint.$desktop) {
+      // margin-top: -1rem;
     }
   }
 }
