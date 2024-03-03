@@ -1,0 +1,36 @@
+@use "@styles/color";
+@use "@styles/font";
+@use "@styles/space";
+@use "@styles/breakpoint";
+@use "@styles/misc";
+
+.footerContainer {
+  // margin-top: auto;
+  background-color: color.$gray-50;
+  height: misc.$footer-height;
+
+  // bottom: misc.$footer-height;
+  width: 100%; /* Ensure the footer spans the entire width */
+  // height: space.$s3;
+  color: color.$gray-400;
+
+  & ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 24px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  & .content {
+    max-width: calc(100vw - (17.5rem + 2rem));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    // gap: 257px;
+    margin: 2rem;
+  }
+}
