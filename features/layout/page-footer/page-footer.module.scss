@@ -28,5 +28,9 @@
     gap: 24px;
     list-style: none;
     margin-right: 2.5rem;
+
+    & a {
+      color: color.$gray-400;
+    }
   }
 }

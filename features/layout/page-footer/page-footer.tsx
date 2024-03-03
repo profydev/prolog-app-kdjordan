@@ -1,4 +1,4 @@
-// import Link from "next/link";
+import Link from "next/link";
 // import { Routes } from "@config/routes";
 import styles from "./page-footer.module.scss";
 
@@ -11,10 +11,18 @@ export default function PageFooter() {
         <div style={{ width: "160px" }}>Version: {version}</div>
         <div>
           <ul>
-            <li>Docs</li>
-            <li>API</li>
-            <li>Help</li>
-            <li>Community</li>
+            <li>
+              <Link href="#">Home</Link>
+            </li>
+            <li>
+              <Link href="#">API</Link>
+            </li>
+            <li>
+              <Link href="#">Help</Link>
+            </li>
+            <li>
+              <Link href="#">Community</Link>
+            </li>
           </ul>
         </div>
         <div style={{ width: "160px" }}>

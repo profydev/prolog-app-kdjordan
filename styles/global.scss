@@ -7,4 +7,9 @@ body {
 
 a {
   color: color.$primary-700;
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
 }
