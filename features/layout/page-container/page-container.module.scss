@@ -22,7 +22,7 @@
 .contentContainer {
   min-height: calc(100vh - 2 * space.$s8 - misc.$header-height);
   margin-top: misc.$header-height;
-  padding: space.$s8 space.$s3;
+  padding: space.$s8 space.$s3 0 space.$s3;
   background: white;
 
   @media (min-width: breakpoint.$desktop) {

@@ -8,9 +8,7 @@ export default function PageFooter() {
   return (
     <div className={styles.footerContainer}>
       <div className={styles.content}>
-        <div>
-          <div>Version: {version}</div>
-        </div>
+        <div style={{ width: "160px" }}>Version: {version}</div>
         <div>
           <ul>
             <li>Docs</li>
@@ -19,9 +17,13 @@ export default function PageFooter() {
             <li>Community</li>
           </ul>
         </div>
-        <div>
+        <div style={{ width: "160px" }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={"/icons/logo-small.svg"} alt="logo" />
+          <img
+            src={"/icons/logo-small.svg"}
+            alt="logo"
+            style={{ float: "right" }}
+          />
         </div>
       </div>
     </div>
