@@ -6,11 +6,9 @@ export default function PageFooter() {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const version = require("next/package.json").version;
   return (
-
     <footer className={styles.footer}>
       <div className={styles.content}>
         <div className={styles.info}>Version: {version}</div>
-
         <ul className={styles.links}>
           <li>
             <Link href="#">Docs</Link>
@@ -25,7 +23,6 @@ export default function PageFooter() {
             <Link href="#">Community</Link>
           </li>
         </ul>
-
         <div className={styles.logo}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={"/icons/logo-small.svg"} alt="logo" />
