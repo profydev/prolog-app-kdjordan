@@ -7,31 +7,30 @@ export default function PageFooter() {
   const version = require("next/package.json").version;
   return (
 
-    <footer className={styles.footerContainer}>
-      <div className={styles.footerContainer}>
-        <div className={styles.content}>
-          <div className={styles.info}>Version: {version}</div>
+    <footer className={styles.footer}>
+      <div className={styles.content}>
+        <div className={styles.info}>Version: {version}</div>
 
-          <ul className={styles.links}>
-            <li>
-              <Link href="#">Docs</Link>
-            </li>
-            <li>
-              <Link href="#">API</Link>
-            </li>
-            <li>
-              <Link href="#">Help</Link>
-            </li>
-            <li>
-              <Link href="#">Community</Link>
-            </li>
-          </ul>
+        <ul className={styles.links}>
+          <li>
+            <Link href="#">Docs</Link>
+          </li>
+          <li>
+            <Link href="#">API</Link>
+          </li>
+          <li>
+            <Link href="#">Help</Link>
+          </li>
+          <li>
+            <Link href="#">Community</Link>
+          </li>
+        </ul>
+
         <div className={styles.logo}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={"/icons/logo-small.svg"} alt="logo" />
         </div>
       </div>
-
     </footer>
   );
 }
