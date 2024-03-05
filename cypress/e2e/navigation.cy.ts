@@ -33,6 +33,26 @@ describe("Sidebar Navigation", () => {
       cy.get("nav").contains("Support");
     });
 
+    it("has footer", () => {
+      cy.get("footer").should("exist");
+
+      cy.get("footer")
+        .contains("Docs")
+        .should("have.attr", "href", "/dashboard#");
+
+      cy.get("footer")
+        .contains("API")
+        .should("have.attr", "href", "/dashboard#");
+
+      cy.get("footer")
+        .contains("Help")
+        .should("have.attr", "href", "/dashboard#");
+
+      cy.get("footer")
+        .contains("Community")
+        .should("have.attr", "href", "/dashboard#");
+    });
+
     it("is collapsible", () => {
       // collapse navigation
       cy.get("nav").contains("Collapse").click();
