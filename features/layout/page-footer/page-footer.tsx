@@ -6,7 +6,7 @@ export default function PageFooter() {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const version = require("next/package.json").version;
   return (
-    <div className={styles.footerContainer}>
+    <footer className={styles.footerContainer}>
       <div className={styles.content}>
         <div className={styles.info}>Version: {version}</div>
 
@@ -30,6 +30,6 @@ export default function PageFooter() {
           <img src={"/icons/logo-small.svg"} alt="logo" />
         </div>
       </div>
-    </div>
+    </footer>
   );
 }
