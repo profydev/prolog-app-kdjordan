@@ -28,6 +28,7 @@ describe("Project List", () => {
         .find("li")
         .each(($el, index) => {
           if (index < mockProjects.length) {
+
             // Add your assertions here using the mockProjects data
             cy.wrap($el).contains(mockProjects[index].name);
             cy.wrap($el).contains(languageNames[index]);
@@ -38,8 +39,10 @@ describe("Project List", () => {
               .find("a")
               .should("have.attr", "href", "/dashboard/issues");
           } else {
+
             console.log("each() function is not working as expected");
           }
+
         });
     });
   });
