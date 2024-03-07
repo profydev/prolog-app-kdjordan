@@ -9,21 +9,31 @@ export default function Modal({ isModalOpen, setIsModalOpen }: ModalProps) {
     <div>
       <div className={styles.modalOverlay}>
         <div className={styles.modalContent}>
-          {/* Content of the modal */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={"/icons/mail.svg"}
-            alt="Mail icon"
-            className={styles.mailIcon}
-          />
-          <h3>Contact Us Via Email</h3>
-          <p className={styles.modalText}>
-            Any questions? Send is an email at prolog@profy.dev. We usually
-            answer within 24 hours.
-          </p>
-          <div className={styles.modalButtonContainer}>
-            <button onClick={() => setIsModalOpen(!isModalOpen)}>Cancel</button>
+          <div className={styles.upper}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={"/icons/mail.svg"}
+              alt="Mail icon"
+              className={styles.mailIcon}
+            />
+            <div className={styles.modalHeader}>Contact Us Via Email</div>
+            <div className={styles.modalText}>
+              Any questions? Send us an email at
+              <br />
+              prolog@profy.dev. We usually answer within 24
+              <br />
+              hours.
+            </div>
+          </div>
+          <div className={styles.lower}>
             <button
+              onClick={() => setIsModalOpen(!isModalOpen)}
+              className={styles.cancelButton}
+            >
+              Cancel
+            </button>
+            <button
+              className={styles.emailButton}
               onClick={() =>
                 (window.location.href =
                   "mailto:support@prolog-app.com?subject=Support Request")
