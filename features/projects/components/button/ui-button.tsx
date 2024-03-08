@@ -11,8 +11,7 @@ export default function UIButton({
   console.log(title, size, color, state, icon);
 
   return (
-    <button className={styles.size}>
-      <span className="icon">{icon}</span>
+    <button className={`${styles[color]} ${styles[size]}`}>
       <span className="text">{title}</span>
     </button>
   );
