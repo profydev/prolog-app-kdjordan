@@ -3,6 +3,7 @@ import { Routes } from "../config/routes";
 import { useState } from "react";
 import Modal from "../features/projects/components/modal/modal";
 import styles from "./index.module.scss";
+import UIButton from "../features/projects/components/button/ui-button";
 import TopNavigation from "../features/projects/components/top-navigation/top-navigation";
 
 const IssuesPage = () => {
@@ -33,6 +34,13 @@ const IssuesPage = () => {
           </div>
         </div>
       </header>
+      <UIButton
+        title="Contact us"
+        size="medium"
+        color="primary"
+        state="active"
+        icon="true"
+      />
       <button
         className={styles.contactButton}
         onClick={() => setIsModalOpen(!isModalOpen)}
