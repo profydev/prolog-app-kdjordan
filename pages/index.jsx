@@ -44,9 +44,10 @@ const IssuesPage = () => {
       <div style={{ marginLeft: "20px" }}>
         <UIButton
           title="Button CTA"
-          size="large"
-          color="primary"
-          icon="trailing"
+          size="xlarge"
+          color="emptyError"
+          disabled
+          icon="leading"
         />
       </div>
     </div>

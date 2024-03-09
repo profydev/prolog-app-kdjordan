@@ -8,7 +8,7 @@ export function UIButton(props: ButtonProps) {
   {
     /* eslint-disable-next-line @next/next/no-img-element */
   }
-  console.log(disabled);
+  console.log(color);
   // Define the class names based on the props
   const buttonClassNames = classNames(
     styles.button,
@@ -30,17 +30,15 @@ export function UIButton(props: ButtonProps) {
     } else if (icon === IconType.trailing) {
       return (
         <>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           {title}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/icons/button-icon.svg" alt="CTA" />
         </>
       );
     } else if (icon === IconType.only) {
-      {
-        /* eslint-disable-next-line @next/next/no-img-element */
-      }
       return (
         <>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/icons/button-icon.svg" alt="CTA" />
         </>
       );
