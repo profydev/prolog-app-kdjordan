@@ -34,6 +34,13 @@ const IssuesPage = () => {
           </div>
         </div>
       </header>
+      <UIButton
+        title="Contact us"
+        size="medium"
+        color="primary"
+        state="active"
+        icon="true"
+      />
       <button
         className={styles.contactButton}
         onClick={() => setIsModalOpen(!isModalOpen)}
