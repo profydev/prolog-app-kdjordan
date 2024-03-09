@@ -1,0 +1,71 @@
+@use "@styles/color";
+
+.button {
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  /* remove default button styles */
+  border: none;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  line-height: normal;
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  appearance: none;
+
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+
+  &.small {
+    padding: 8px 14px;
+  }
+
+  &.medium {
+    padding: 10px 16px;
+  }
+
+  &.large {
+    padding: 10px 18px;
+  }
+
+  &.xlarge {
+    padding: 12px 20px;
+  }
+
+  &.primary {
+    background: color.$primary-600;
+    color: white;
+  }
+
+  &.secondary {
+    background: color.$primary-50;
+    color: color.$primary-700;
+  }
+
+  &.gray {
+    background: white;
+    border: 1px solid color.$gray-300;
+    color: color.$gray-700;
+  }
+
+  &.emptyGray {
+    background: color.$gray-100;
+    color: color.$gray-600;
+  }
+
+  &.emptyError {
+    background: color.$error-100;
+    color: color.$error-600;
+  }
+
+  &.icon {
+    margin-right: 0.5rem;
+  }
+}
