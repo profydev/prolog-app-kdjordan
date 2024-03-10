@@ -34,13 +34,6 @@ const IssuesPage = () => {
           </div>
         </div>
       </header>
-      <UIButton
-        title="Contact us"
-        size="medium"
-        color="primary"
-        state="active"
-        icon="true"
-      />
       <button
         className={styles.contactButton}
         onClick={() => setIsModalOpen(!isModalOpen)}
@@ -52,8 +45,7 @@ const IssuesPage = () => {
         <UIButton
           title="Button CTA"
           size="xlarge"
-          color="emptyError"
-          disabled
+          color="primary"
           icon="leading"
         />
       </div>
