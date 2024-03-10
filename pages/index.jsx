@@ -46,6 +46,7 @@ const IssuesPage = () => {
           title="Button CTA"
           size="xlarge"
           color="primary"
+          disabled
           icon="leading"
         />
       </div>
