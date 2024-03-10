@@ -1,13 +1,13 @@
 import { ButtonHTMLAttributes } from "react";
 
-enum ButtonSizes {
+export enum ButtonSizes {
   small = "small",
   medium = "medium",
   large = "large",
   xlarge = "xlarge",
 }
 
-enum ButtonColor {
+export enum ButtonColor {
   primary = "primary",
   secondary = "secondary",
   gray = "gray",
