@@ -1,6 +1,33 @@
 import mockProjects from "../fixtures/projects.json";
 
 describe("Project List", () => {
+  it("displays loading state", () => {
+    cy.visit("http://localhost:3000/dashboard");
+    cy.get("main").contains("Loading", { timeout: 10000 });
+  });
+
+  it("handles error state correctly", async () => {
+    cy.intercept("GET", "/api/projects", (req) => {
+      req.reply({
+        statusCode: 200,
+        body: {
+          error: true,
+          message: "Error fetching projects",
+        },
+      });
+    }).as("getProjectsError");
+
+    //Visit the page where the component using the hook is rendered
+    cy.visit("http://localhost:3000/dashboard");
+
+    it("displays error state when useGetProjects hook returns an error", () => {
+      // Assert that the error message is displayed in the UI
+      cy.contains("There was a problem while loading the project data").should(
+        "be.visible",
+      );
+    });
+  });
+
   beforeEach(() => {
     // setup request mock
     cy.intercept("GET", "https://prolog-api.profy.dev/project", {

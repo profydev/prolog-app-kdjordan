@@ -3,15 +3,36 @@ import { useGetProjects } from "../../api/use-get-projects";
 import styles from "./project-list.module.scss";
 
 export function ProjectList() {
-  const { data, isLoading, isError, error } = useGetProjects();
+  const { data, isLoading, isError, error, refetch } = useGetProjects();
+
+  function handleReload() {
+    refetch();
+  }
 
   if (isLoading) {
     return <div>Loading</div>;
   }
 
   if (isError) {
-    console.error(error);
-    return <div>Error: {error.message}</div>;
+    console.log(error.message);
+    return (
+      <div className={styles.error}>
+        <div>
+          <div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/icons/exclaim.svg" alt="Alert !" />
+          </div>
+          <div>There was a problem while loading the project data</div>
+        </div>
+        <div onClick={handleReload}>
+          <div>Try Again</div>
+          <div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/icons/arrow-right.svg" alt="Alert !" />
+          </div>
+        </div>
+      </div>
+    );
   }
 
   return (

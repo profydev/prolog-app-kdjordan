@@ -1,5 +1,6 @@
 @use "@styles/breakpoint";
 @use "@styles/space";
+@use "@styles/color";
 
 .list {
   display: grid;
@@ -13,5 +14,34 @@
 
   @media (min-width: breakpoint.$desktop) {
     grid-template-columns: repeat(auto-fit, 400px);
+  }
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 16px;
+  background: color.$error-25;
+  border: 1px solid color.$error-300;
+  border-radius: 8px;
+  color: red;
+
+  & > div:first-of-type {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    max-width: 70%;
+  }
+
+  & > div:last-of-type {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
   }
 }
