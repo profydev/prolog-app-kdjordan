@@ -3,7 +3,6 @@ import { Routes } from "../config/routes";
 import { useState } from "react";
 import Modal from "../features/projects/components/modal/modal";
 import styles from "./index.module.scss";
-import { UIButton } from "../features/ui/ui-button/ui-button";
 import TopNavigation from "../features/projects/components/top-navigation/top-navigation";
 
 const IssuesPage = () => {
@@ -41,15 +40,6 @@ const IssuesPage = () => {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/icons/message.svg" alt="Contact" />
       </button>
-      <div style={{ marginLeft: "20px" }}>
-        <UIButton
-          title="Button CTA"
-          size="xlarge"
-          color="primary"
-          disabled
-          icon="leading"
-        />
-      </div>
     </div>
   );
 };
