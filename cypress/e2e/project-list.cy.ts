@@ -2,8 +2,17 @@ import mockProjects from "../fixtures/projects.json";
 
 describe("Project List", () => {
   it("displays loading state", () => {
-    cy.visit("http://localhost:3000/dashboard");
-    cy.get("main").contains("Loading", { timeout: 10000 });
+    cy.intercept("GET", "/api/projects", () => {
+      it("displays loader when data is loading", () => {
+        cy.intercept("GET", "/api/projects", { fixture: "projects.json" }).as(
+          "getProjects",
+        );
+        cy.visit("/http://localhost:3000/dashboard");
+
+        cy.wait("@getProjects"); // Wait for the data request to complete
+        cy.get(".loaderContainer").should("be.visible");
+      });
+    });
   });
 
   it("handles error state correctly", async () => {
@@ -15,7 +24,7 @@ describe("Project List", () => {
           message: "Error fetching projects",
         },
       });
-    }).as("getProjectsError");
+    });
 
     //Visit the page where the component using the hook is rendered
     cy.visit("http://localhost:3000/dashboard");
