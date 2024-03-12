@@ -1,0 +1,100 @@
+@use "@styles/color";
+
+.customCheckbox {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  position: relative;
+  cursor: pointer;
+
+  &.small {
+    font-size: 14px;
+    line-height: 20px;
+    gap: 8px;
+  }
+
+  &.medium {
+    font-size: 24px;
+    line-height: 24px;
+    gap: 12px;
+  }
+
+  input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .checkmark {
+    margin-left: 8px;
+    position: relative;
+    border: 1px solid color.$gray-300;
+    background-color: white;
+    transition: background-color 0.3s ease;
+
+    &.small {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+    }
+
+    &.medium {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+    }
+
+    &.checkedA {
+      background: white;
+      border: 1px solid color.$gray-300;
+    }
+
+    &.checkedB {
+      background: color.$primary-300;
+      border: 1px solid color.$primary-600;
+
+      &::after {
+        content: url("/icons/checkmark.svg");
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -60%);
+      }
+    }
+
+    &.checkedC {
+      background: color.$primary-300;
+      border: 1px solid color.$primary-600;
+
+      &::after {
+        content: url("/icons/minus.svg");
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -75%);
+      }
+    }
+  }
+
+  &:hover input ~ .checkmark {
+    background-color: color.$primary-300;
+  }
+
+  &:focus input ~ .checkmark {
+    background-color: color.$primary-300;
+    box-shadow: 0 0 0 4px #f4ebff;
+  }
+
+  &.disabled {
+    color: color.$gray-300;
+    cursor: not-allowed;
+  }
+}
+
+input[type="checkbox"]:disabled + .checkmark {
+  background-color: color.$gray-300;
+  border: 1px solid color.$gray-300;
+  cursor: not-allowed;
+}
