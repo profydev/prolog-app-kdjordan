@@ -49,9 +49,10 @@ const IssuesPage = () => {
       </button>
       <div style={{ marginLeft: "10rem" }}>
         <UICustomSelect
-          label={"Select Team Member"}
+          title={"Select Team Member"}
+          label={"Team Member"}
           hint={"hint"}
-          icon={false}
+          icon={true}
           options={options}
           disabled={false}
         />

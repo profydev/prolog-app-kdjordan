@@ -4,6 +4,7 @@ import { useState } from "react";
 // import { capitalize } from "lodash";
 
 type UISelectProps = {
+  title: string;
   hint: string;
   label: string;
   icon: boolean;
@@ -12,6 +13,7 @@ type UISelectProps = {
 };
 
 export default function UISelect({
+  title,
   icon,
   label,
   hint,
@@ -37,18 +39,26 @@ export default function UISelect({
         disabled={disabled}
       >
         <div className={selectedOption !== "" ? styles.selectedOption : ""}>
-          {selectedOption !== "" ? selectedOption : label}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          {icon && (
+            <img
+              src="/icons/person.svg"
+              alt="checkmark"
+              className={styles.personIcon}
+            />
+          )}
+          {selectedOption !== "" ? selectedOption : title}
         </div>
         <div
           className={styles.carat}
           style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/icons/carat.svg" alt="" />
+          <img src="/icons/carat.svg" alt="Select carat" />
         </div>
       </button>
       {isOpen && (
-        <div>
+        <div className={styles.customOptionWrapper}>
           <ul>
             {options.map((option) => (
               <li
@@ -56,13 +66,15 @@ export default function UISelect({
                 className={styles.customOption}
                 onClick={setSelection}
               >
-                {option}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
+                {/* {icon == true && <img src="/icons/person.svg" alt="person" className={styles.personIcon} />} */}
+                {option}
                 {option === selectedOption && (
+                  // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src="/icons/team-checkmark.svg"
                     alt="checkmark"
-                    className={styles.checkmark}
+                    className={styles.checkMark}
                   />
                 )}
               </li>
@@ -70,6 +82,7 @@ export default function UISelect({
           </ul>
         </div>
       )}
+      {/* {selectedOption} */}
     </div>
   );
 }
