@@ -4,6 +4,9 @@ import { useState } from "react";
 import Modal from "../features/projects/components/modal/modal";
 import styles from "./index.module.scss";
 import TopNavigation from "../features/projects/components/top-navigation/top-navigation";
+import UIInput from "../features/ui/ui-input/ui-input";
+// import UISelect from "../features/ui/ui-select/ui-select";
+
 const IssuesPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -37,6 +40,25 @@ const IssuesPage = () => {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/icons/message.svg" alt="Contact" />
       </button>
+      <div style={{ margin: "4rem" }}>
+        {/* <UISelect 
+          title={"Title Type"}
+          options={["Option 1", "Option 2", "Option 3", "Option 4"]}
+          disabled={false}
+          errorMssg="Error Mssg"
+          icon={true}
+          hint={"This is a hint"}
+          label={"Label"}
+        /> */}
+        <UIInput
+          label={"Email"}
+          hint={"This is a hint"}
+          placeholder={"olivia@profy.com"}
+          // errorMssg={"This is an error"}
+          icon={true}
+          disabled={false}
+        />
+      </div>
     </div>
   );
 };
