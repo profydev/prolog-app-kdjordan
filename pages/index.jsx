@@ -4,16 +4,13 @@ import { useState } from "react";
 import Modal from "../features/projects/components/modal/modal";
 import styles from "./index.module.scss";
 import TopNavigation from "../features/projects/components/top-navigation/top-navigation";
-
 const IssuesPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <div>
-      {isModalOpen ? (
+      {isModalOpen && (
         <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-      ) : (
-        ""
       )}
       <header className={styles.header}>
         <div className={styles.container}>
