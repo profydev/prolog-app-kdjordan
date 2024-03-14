@@ -12,8 +12,27 @@
     border: 1px solid color.$gray-300;
     background-color: white;
     border-radius: 8px;
-    color: color.$gray-300;
+    color: color.$gray-900;
     padding: 10px 14px;
+  }
+
+  & .label {
+    color: color.$gray-700;
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  & .error {
+    color: color.$error-500;
+    font-weight: 400;
+    font-size: 14px;
+    margin-top: 6px;
+  }
+
+  & .hint {
+    color: color.$gray-500;
+    font-size: 14px;
+    margin-top: 6px;
   }
 
   & .personIcon {
@@ -36,10 +55,13 @@
   & .customOptionWrapper {
     margin-top: 8px;
     box-shadow: 0 12px 16px -4px #1018281d;
+
+    & li {
+      cursor: pointer;
+    }
   }
 
   .customOption {
-    // width: 108px;
     background-color: #fff;
     color: color.$gray-900;
     padding: 10px 14px;
@@ -47,6 +69,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  .customOptionIconWrapper {
+    display: flex;
+    align-items: center;
   }
 }
 

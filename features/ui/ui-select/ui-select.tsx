@@ -1,15 +1,16 @@
 import styles from "./ui-select.module.scss";
 // import classNames from "classnames";
 import { useState } from "react";
-// import { capitalize } from "lodash";
+import { capitalize } from "lodash";
 
 type UISelectProps = {
   title: string;
-  hint: string;
-  label: string;
+  hint?: string;
+  label?: string;
   icon: boolean;
   options: string[];
   disabled?: boolean;
+  errorMssg: string;
 };
 
 export default function UISelect({
@@ -19,28 +20,40 @@ export default function UISelect({
   hint,
   options,
   disabled,
+  errorMssg,
 }: UISelectProps) {
-  console.log(icon, label, hint, disabled);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
 
   function setSelection(e: React.MouseEvent<HTMLLIElement>) {
     e.preventDefault();
-    const selected = (e.target as HTMLLIElement).innerHTML as string;
-    setSelectedOption(selected);
+    let selected = (e.target as HTMLLIElement).textContent as string;
+
+    if (icon) {
+      selected = selected.replace(
+        /<img[^>]*>|<span\b[^>]*>(.*?)<\/span>/g,
+        "$1",
+      );
+      setSelectedOption(selected);
+    } else {
+      setSelectedOption(selected);
+    }
     setIsOpen(!isOpen);
   }
 
+  console.log(errorMssg);
+
   return (
     <div className={styles.customSelect}>
+      {label && <div className={styles.label}>{capitalize(label)}</div>}
       <button
         className={styles.customSelectButton}
         onClick={() => setIsOpen(!isOpen)}
         disabled={disabled}
       >
         <div className={selectedOption !== "" ? styles.selectedOption : ""}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           {icon && (
+            // eslint-disable-next-line @next/next/no-img-element
             <img
               src="/icons/person.svg"
               alt="checkmark"
@@ -57,6 +70,10 @@ export default function UISelect({
           <img src="/icons/carat.svg" alt="Select carat" />
         </div>
       </button>
+      {hint && errorMssg == undefined && (
+        <div className={styles.hint}>{capitalize(hint)}</div>
+      )}
+      {errorMssg && <div className={styles.error}>{capitalize(errorMssg)}</div>}
       {isOpen && (
         <div className={styles.customOptionWrapper}>
           <ul>
@@ -66,9 +83,19 @@ export default function UISelect({
                 className={styles.customOption}
                 onClick={setSelection}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                {/* {icon == true && <img src="/icons/person.svg" alt="person" className={styles.personIcon} />} */}
-                {option}
+                {icon == true ? (
+                  <span className={styles.customOptionIconWrapper}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/icons/person.svg"
+                      alt="person"
+                      className={styles.personIcon}
+                    />
+                    {option}
+                  </span>
+                ) : (
+                  <>{option}</>
+                )}
                 {option === selectedOption && (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
@@ -82,7 +109,6 @@ export default function UISelect({
           </ul>
         </div>
       )}
-      {/* {selectedOption} */}
     </div>
   );
 }

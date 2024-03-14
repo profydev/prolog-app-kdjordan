@@ -4,16 +4,8 @@ import { useState } from "react";
 import Modal from "../features/projects/components/modal/modal";
 import styles from "./index.module.scss";
 import TopNavigation from "../features/projects/components/top-navigation/top-navigation";
-import UICustomSelect from "../features/ui/ui-select/ui-select";
 const IssuesPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const options = [
-    "Alice Johnson",
-    "Charlie Brown",
-    "David Smith",
-    "Emily Davis",
-    "Frankie Green",
-  ];
 
   return (
     <div>
@@ -47,16 +39,6 @@ const IssuesPage = () => {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/icons/message.svg" alt="Contact" />
       </button>
-      <div style={{ marginLeft: "10rem" }}>
-        <UICustomSelect
-          title={"Select Team Member"}
-          label={"Team Member"}
-          hint={"hint"}
-          icon={true}
-          options={options}
-          disabled={false}
-        />
-      </div>
     </div>
   );
 };
