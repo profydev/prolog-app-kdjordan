@@ -1,7 +1,7 @@
 import styles from "./ui-select.module.scss";
-// import classNames from "classnames";
 import { useState } from "react";
 import { capitalize } from "lodash";
+import Icon from "../icon/icon";
 
 type UISelectProps = {
   title: string;
@@ -41,8 +41,6 @@ export default function UISelect({
     setIsOpen(!isOpen);
   }
 
-  console.log(errorMssg);
-
   return (
     <div className={styles.customSelect}>
       {label && <div className={styles.label}>{capitalize(label)}</div>}
@@ -53,11 +51,12 @@ export default function UISelect({
       >
         <div className={selectedOption !== "" ? styles.selectedOption : ""}>
           {icon && (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
+            <Icon
               src="/icons/person.svg"
-              alt="checkmark"
-              className={styles.personIcon}
+              alt="person"
+              height={16}
+              width={18}
+              cssClass={styles.personIcon}
             />
           )}
           {selectedOption !== "" ? selectedOption : title}
@@ -66,8 +65,7 @@ export default function UISelect({
           className={styles.carat}
           style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/icons/carat.svg" alt="Select carat" />
+          <Icon src="/icons/carat.svg" height={12} width={8} alt="person" />
         </div>
       </button>
       {hint && errorMssg == undefined && (
@@ -85,11 +83,12 @@ export default function UISelect({
               >
                 {icon == true ? (
                   <span className={styles.customOptionIconWrapper}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    <Icon
                       src="/icons/person.svg"
                       alt="person"
-                      className={styles.personIcon}
+                      height={20}
+                      width={20}
+                      cssClass={styles.personIcon}
                     />
                     {option}
                   </span>
@@ -97,11 +96,12 @@ export default function UISelect({
                   <>{option}</>
                 )}
                 {option === selectedOption && (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
+                  <Icon
                     src="/icons/team-checkmark.svg"
                     alt="checkmark"
-                    className={styles.checkMark}
+                    height={20}
+                    width={20}
+                    cssClass={styles.checkMark}
                   />
                 )}
               </li>
