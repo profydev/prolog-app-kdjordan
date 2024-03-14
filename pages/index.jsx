@@ -9,10 +9,8 @@ const IssuesPage = () => {
 
   return (
     <div>
-      {isModalOpen ? (
+      {isModalOpen && (
         <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-      ) : (
-        ""
       )}
       <header className={styles.header}>
         <div className={styles.container}>
