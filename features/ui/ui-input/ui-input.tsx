@@ -8,8 +8,9 @@ type UIInputProps = {
   label?: string;
   icon: boolean;
   disabled?: boolean;
-  errorMssg: string;
+  errorMssg?: string;
   placeholder: string;
+  error: boolean;
 };
 
 export default function UIInput({
@@ -19,6 +20,7 @@ export default function UIInput({
   placeholder,
   icon,
   disabled,
+  error,
 }: UIInputProps) {
   const [inputValue, setInputValue] = useState("");
 
@@ -59,7 +61,7 @@ export default function UIInput({
             disabled={disabled}
           />
         )}
-        {errorMssg && (
+        {error && (
           <Icon
             src="/icons/exclaim.svg"
             alt="Error icon"
@@ -70,9 +72,7 @@ export default function UIInput({
         )}
       </div>
       {errorMssg && <div className={styles.error}>{capitalize(errorMssg)}</div>}
-      {!errorMssg && hint && (
-        <div className={styles.hint}>{capitalize(hint)}</div>
-      )}
+      {!error && hint && <div className={styles.hint}>{capitalize(hint)}</div>}
     </div>
   );
 }

@@ -57,6 +57,7 @@ const IssuesPage = () => {
           // errorMssg={"This is an error"}
           icon={true}
           disabled={false}
+          error={true}
         />
       </div>
     </div>
