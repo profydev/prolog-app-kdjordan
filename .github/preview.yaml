@@ -10,9 +10,6 @@ jobs:
   Deploy-Preview:
     runs-on: ubuntu-latest
     steps:
-
-      - name: Print Environment Variables
-        run: echo "Environment Variables: ${{ toJson(env) }}"
       - uses: actions/checkout@v2
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
