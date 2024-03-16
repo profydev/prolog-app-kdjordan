@@ -43,6 +43,7 @@ export function UICheckbox({
     ? (iconPadding = IconPadding.small)
     : (iconPadding = IconPadding.medium);
 
+  console.log(props.disabled);
   const handleCheckboxClick = () => {
     setClickCount((clickCount + 1) % 3);
   };
