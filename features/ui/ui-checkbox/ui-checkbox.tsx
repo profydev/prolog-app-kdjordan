@@ -85,7 +85,7 @@ export function UICheckbox({
   const checkBoxClassNames = classNames(styles.customCheckbox, styles[boxSize]);
 
   const checkMarkClassnames = classNames(styles.checkmark, styles[boxSize], {
-    [styles.checked]: clickCount !== 0,
+    [styles.checked]: clickCount !== 0 && !props.disabled,
     [styles.disabled]: props.disabled,
   });
 
