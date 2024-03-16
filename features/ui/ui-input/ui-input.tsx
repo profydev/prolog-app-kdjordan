@@ -13,7 +13,7 @@ type UIInputProps = {
   error: boolean;
 };
 
-export default function UIInput({
+export function UIInput({
   label,
   hint,
   errorMssg,
@@ -36,11 +36,10 @@ export default function UIInput({
         {icon === true ? (
           <span>
             <Icon
-              src="/icons/mail.svg"
               alt="Mail icon"
               height={16}
               width={16}
-              cssClass="mailIcon"
+              src="/icons/mail.svg"
             />
             <input
               type="text"
@@ -67,7 +66,6 @@ export default function UIInput({
             alt="Error icon"
             height={20}
             width={20}
-            cssClass="errorIcon"
           />
         )}
       </div>

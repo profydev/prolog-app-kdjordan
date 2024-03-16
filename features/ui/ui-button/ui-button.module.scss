@@ -1,13 +1,19 @@
 @use "@styles/color";
+@use "@styles/space";
+@use "@styles/font";
+
+/* stylelint-disable-next-line scss/dollar-variable-colon-space-after, prettier/prettier */
+$box-shadow:
+  0 4px 8px -2px rgb(16 24 40 / 10%),
+  0 2px 4px -2px rgb(16 24 40 / 6%);
 
 .button {
   cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
-  border-radius: 8px;
+  font: font.$text-sm-regular;
+  border-radius: space.$s2;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: space.$s2;
 
   /* remove default button styles */
   border: none;
@@ -44,18 +50,18 @@
     background: color.$primary-600;
     color: white;
     border: 1px solid color.$primary-600;
-    box-shadow: 0 1px 2px 0 #1018280d;
+    box-shadow: $box-shadow;
 
     &:hover {
       background: color.$primary-700;
       border: 1px solid color.$primary-700;
-      box-shadow: 0 1px 2px 0 #1018280d;
+      box-shadow: $box-shadow;
     }
 
     &:focus {
       background: color.$primary-600;
       border: color.$primary-600;
-      box-shadow: 0 1px 2px 0 #1018280d;
+      box-shadow: $box-shadow;
     }
 
     &:disabled {
@@ -68,25 +74,25 @@
     background: color.$primary-50;
     border: 1px solid color.$primary-50;
     color: color.$primary-700;
-    box-shadow: 0 1px 2px 0 #1018280d;
+    box-shadow: $box-shadow;
 
     &:hover {
       background: color.$primary-100;
       border: 1px solid color.$primary-100;
-      box-shadow: 0 1px 2px 0 #1018280d;
+      box-shadow: $box-shadow;
     }
 
     &:focus {
       background: color.$primary-50;
       border: 1px solid color.$primary-50;
-      box-shadow: 0 1px 2px 0 #1018280d;
+      box-shadow: $box-shadow;
     }
 
     &:disabled {
       background: color.$primary-25;
       color: color.$primary-300;
       border: 1px solid color.$primary-25;
-      box-shadow: 0 1px 2px 0 #1018280d;
+      box-shadow: $box-shadow;
     }
   }
 
@@ -94,26 +100,26 @@
     background: white;
     border: 1px solid color.$gray-300;
     color: color.$gray-700;
-    box-shadow: 0 1px 2px 0 #1018280d;
+    box-shadow: $box-shadow;
 
     &:hover {
       background: color.$gray-50;
       border: 1px solid color.$gray-300;
       color: color.$gray-800;
-      box-shadow: 0 1px 2px 0 #1018280d;
+      box-shadow: $box-shadow;
     }
 
     &:focus {
       background: white;
       border: 1px solid color.$gray-700;
-      box-shadow: 0 1px 2px 0 #1018280d;
+      box-shadow: $box-shadow;
     }
 
     &:disabled {
       background: white;
       color: color.$gray-300;
       border: 1px solid color.$gray-200;
-      box-shadow: 0 1px 2px 0 #1018280d;
+      box-shadow: $box-shadow;
     }
   }
 
@@ -152,7 +158,7 @@
   &.error {
     color: white;
     border: 1px solid color.$error-600;
-    box-shadow: 0 1px 2px 0 #1018280d;
+    box-shadow: $box-shadow;
     background: color.$error-600;
 
     &:hover {
@@ -162,13 +168,13 @@
     &:focus {
       background: color.$error-600;
       border: 1px solid color.$error-600;
-      box-shadow: 0 1px 2px 0 #1018280d;
+      box-shadow: $box-shadow;
     }
 
     &:disabled {
       background: color.$error-200;
       border: 1px solid color.$error-200;
-      box-shadow: 0 1px 2px 0 #1018280d;
+      box-shadow: $box-shadow;
     }
   }
 
@@ -185,6 +191,34 @@
 
     &:disabled {
       color: color.$error-300;
+    }
+  }
+
+  &.leading {
+    img {
+      order: 1;
+    }
+
+    :not(img) {
+      order: 2;
+    }
+  }
+
+  &.trailing {
+    :not(img) {
+      order: 1;
+    }
+
+    img {
+      order: 2;
+    }
+  }
+
+  &.only {
+    padding: 8px;
+
+    :not(img) {
+      display: none;
     }
   }
 }

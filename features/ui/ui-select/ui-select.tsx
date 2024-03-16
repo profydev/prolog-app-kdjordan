@@ -51,13 +51,7 @@ export default function UISelect({
       >
         <div className={selectedOption !== "" ? styles.selectedOption : ""}>
           {icon && (
-            <Icon
-              src="/icons/person.svg"
-              alt="person"
-              height={16}
-              width={18}
-              cssClass={styles.personIcon}
-            />
+            <Icon src="/icons/person.svg" alt="person" height={16} width={18} />
           )}
           {selectedOption !== "" ? selectedOption : title}
         </div>
@@ -88,7 +82,6 @@ export default function UISelect({
                       alt="person"
                       height={20}
                       width={20}
-                      cssClass={styles.personIcon}
                     />
                     {option}
                   </span>
@@ -101,7 +94,6 @@ export default function UISelect({
                     alt="checkmark"
                     height={20}
                     width={20}
-                    cssClass={styles.checkMark}
                   />
                 )}
               </li>

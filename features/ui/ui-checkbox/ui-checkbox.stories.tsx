@@ -1,4 +1,4 @@
-import UICheckbox from "./ui-checkbox";
+import { UICheckbox, CheckboxSize, UICheckboxProps } from "./ui-checkbox";
 import { Meta, StoryFn } from "@storybook/react";
 
 export default {
@@ -10,43 +10,23 @@ export default {
   },
 } as Meta<typeof UICheckbox>;
 
-const Template: StoryFn<typeof UICheckbox> = ({ label, size, disabled }) => (
+const Template: StoryFn<typeof UICheckbox> = ({
+  children,
+  boxSize = CheckboxSize.medium,
+  ...props
+}: UICheckboxProps) => (
   <div style={{ margin: "2rem" }}>
-    <UICheckbox label={label} size={size} disabled={disabled} />
+    <UICheckbox boxSize={boxSize} {...props}>
+      {children}
+    </UICheckbox>
   </div>
 );
 
-export const Small = Template.bind({});
-Small.args = {
-  label: "Label",
-  size: "small",
+export const Base = Template.bind({});
+Base.args = {
+  boxSize: CheckboxSize.small,
+  children: "Label",
 };
-Small.parameters = {
-  viewMode: "docs",
-};
-export const Medium = Template.bind({});
-Medium.args = {
-  label: "Label",
-  size: "medium",
-};
-Medium.parameters = {
-  viewMode: "docs",
-};
-export const SmallDisabled = Template.bind({});
-SmallDisabled.args = {
-  label: "Label",
-  size: "small",
-  disabled: true,
-};
-SmallDisabled.parameters = {
-  viewMode: "docs",
-};
-export const MediumDisabled = Template.bind({});
-MediumDisabled.args = {
-  label: "Label",
-  size: "medium",
-  disabled: true,
-};
-MediumDisabled.parameters = {
+Base.parameters = {
   viewMode: "docs",
 };
