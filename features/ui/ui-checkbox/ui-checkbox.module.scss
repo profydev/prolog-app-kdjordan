@@ -31,6 +31,17 @@
       background-color: white;
       transition: background-color 0.3s ease;
 
+      &.disabled {
+        background-color: color.$gray-300;
+        border-color: color.$gray-300;
+        pointer-events: none;
+      }
+
+      &:not(.disabled):hover {
+        background: color.$primary-300;
+        border: 1px solid color.$primary-600;
+      }
+
       &.checked {
         background: color.$primary-100;
         border: 1px solid color.$primary-600;
@@ -64,14 +75,9 @@
       }
     }
 
-    &:hover .checkmark {
-      background: color.$primary-300;
-      border: 1px solid color.$primary-600;
-    }
+    // &:hover .checkmark {
+    //   background: color.$primary-300;
+    //   border: 1px solid color.$primary-600;
+    // }
   }
-}
-
-.disabled {
-  color: color.$gray-300;
-  pointer-events: none;
 }
