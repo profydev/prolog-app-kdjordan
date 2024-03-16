@@ -1,4 +1,4 @@
-import UIInput from "./ui-input";
+import { UIInput } from "./ui-input";
 import { Meta, StoryFn } from "@storybook/react";
 
 export default {

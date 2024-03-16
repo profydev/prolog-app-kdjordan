@@ -58,3 +58,17 @@
 .pageNumber {
   font: font.$text-sm-medium;
 }
+
+.filtersContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: space.$s5;
+
+  & > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: space.$s5;
+  }
+}

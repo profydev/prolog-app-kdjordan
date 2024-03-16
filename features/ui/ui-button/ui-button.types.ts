@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes } from "react";
 
-export enum ButtonSizes {
+export enum ButtonSize {
   small = "small",
   medium = "medium",
   large = "large",
@@ -17,16 +17,17 @@ export enum ButtonColor {
   emptyError = "emptyError",
 }
 
-export enum IconType {
+export enum ButtonIconType {
   leading = "leading",
   trailing = "trailing",
   only = "only",
+  none = "none",
 }
 
-export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  title: string;
-  size: ButtonSizes;
-  color: ButtonColor;
-  disabled?: boolean;
-  icon: IconType;
-};
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  children: React.ReactNode;
+  size?: ButtonSize;
+  color?: ButtonColor;
+  iconSrc?: string;
+  iconStyle?: ButtonIconType;
+}

@@ -1,22 +1,28 @@
 import Image from "next/image";
-import cx from "classnames";
+// import cx from "classnames";
 
 type IconInput = {
   src: string;
   alt: string;
   height: number;
   width: number;
-  cssClass?: string;
+  iconPadding?: number;
 };
 
-export default function Icon({ src, alt, height, width, cssClass }: IconInput) {
+export default function Icon({
+  src,
+  alt,
+  height,
+  width,
+  iconPadding,
+}: IconInput) {
   return (
     <Image
       src={src}
       alt={alt}
       width={width}
       height={height}
-      className={cx(cssClass)}
+      style={{ marginLeft: `${iconPadding}px` }}
     />
   );
 }

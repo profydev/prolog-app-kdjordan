@@ -1,6 +1,6 @@
 import { UIButton } from "./ui-button";
 import { Meta, StoryFn } from "@storybook/react";
-import { ButtonSizes, ButtonColor, IconType } from "./ui-button.types";
+import { ButtonSize, ButtonColor, ButtonIconType } from "./ui-button.types";
 
 export default {
   component: UIButton,
@@ -12,123 +12,27 @@ export default {
 } as Meta<typeof UIButton>;
 
 const Template: StoryFn<typeof UIButton> = ({
-  title,
   size,
   color,
-  disabled,
-  icon,
+  iconSrc,
+  iconStyle,
+  children,
 }) => (
   <div style={{ margin: "2rem" }}>
-    <UIButton
-      title={title}
-      size={size}
-      color={color}
-      disabled={disabled}
-      icon={icon}
-    >
-      {title}
+    <UIButton color={color} size={size} iconSrc={iconSrc} iconStyle={iconStyle}>
+      {children}
     </UIButton>
   </div>
 );
 
 export const Primary = Template.bind({});
 Primary.args = {
-  size: ButtonSizes.large,
+  size: ButtonSize.small,
   color: ButtonColor.primary,
-  title: "Primary",
+  children: "Button CTA",
+  iconSrc: "/icons/button-icon.svg",
+  iconStyle: ButtonIconType.none,
 };
 Primary.parameters = {
-  viewMode: "docs",
-};
-export const Secondary = Template.bind({});
-Secondary.args = {
-  size: ButtonSizes.large,
-  color: ButtonColor.secondary,
-  title: "Secondary",
-};
-Secondary.parameters = {
-  viewMode: "docs",
-};
-
-export const Gray = Template.bind({});
-Gray.args = {
-  size: ButtonSizes.large,
-  color: ButtonColor.gray,
-  title: "Gray",
-};
-Gray.parameters = {
-  viewMode: "docs",
-};
-
-export const Empty = Template.bind({});
-Empty.args = {
-  size: ButtonSizes.large,
-  color: ButtonColor.empty,
-  title: "Empty",
-};
-Empty.parameters = {
-  viewMode: "docs",
-};
-
-export const EmptyGray = Template.bind({});
-EmptyGray.args = {
-  size: ButtonSizes.large,
-  color: ButtonColor.emptyGray,
-  title: "Empty",
-};
-EmptyGray.parameters = {
-  viewMode: "docs",
-};
-
-export const Error = Template.bind({});
-Error.args = {
-  size: ButtonSizes.large,
-  color: ButtonColor.error,
-  title: "Error",
-};
-Error.parameters = {
-  viewMode: "docs",
-};
-
-export const EmptyError = Template.bind({});
-EmptyError.args = {
-  size: ButtonSizes.large,
-  color: ButtonColor.emptyError,
-  title: "Empty Error",
-};
-EmptyError.parameters = {
-  viewMode: "docs",
-};
-
-export const WithIconLeading = Template.bind({});
-WithIconLeading.args = {
-  size: ButtonSizes.large,
-  color: ButtonColor.primary,
-  icon: IconType.leading,
-  title: "With Icon Leading",
-};
-WithIconLeading.parameters = {
-  viewMode: "docs",
-};
-
-export const WithIconTrailing = Template.bind({});
-WithIconTrailing.args = {
-  size: ButtonSizes.large,
-  color: ButtonColor.primary,
-  icon: IconType.trailing,
-  title: "With Icon Trailing",
-};
-WithIconTrailing.parameters = {
-  viewMode: "docs",
-};
-
-export const IconOnly = Template.bind({});
-IconOnly.args = {
-  size: ButtonSizes.large,
-  color: ButtonColor.primary,
-  icon: IconType.only,
-  title: "Icon Only",
-};
-IconOnly.parameters = {
   viewMode: "docs",
 };

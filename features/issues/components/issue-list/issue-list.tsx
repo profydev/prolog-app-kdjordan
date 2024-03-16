@@ -4,6 +4,13 @@ import { useGetProjects } from "@features/projects";
 import { useGetIssues } from "../../api/use-get-issues";
 import { IssueRow } from "./issue-row";
 import styles from "./issue-list.module.scss";
+import {
+  ButtonIconType,
+  ButtonSize,
+  ButtonColor,
+} from "../../../ui/ui-button/ui-button.types";
+import { UICheckbox, CheckboxSize } from "../../../ui/ui-checkbox/ui-checkbox";
+import { UIButton } from "../../../ui/ui-button";
 
 export function IssueList() {
   const router = useRouter();
@@ -41,48 +48,69 @@ export function IssueList() {
   const { items, meta } = issuesPage.data || {};
 
   return (
-    <div className={styles.container}>
-      <table className={styles.table}>
-        <thead>
-          <tr className={styles.headerRow}>
-            <th className={styles.headerCell}>Issue</th>
-            <th className={styles.headerCell}>Level</th>
-            <th className={styles.headerCell}>Events</th>
-            <th className={styles.headerCell}>Users</th>
-          </tr>
-        </thead>
-        <tbody>
-          {(items || []).map((issue) => (
-            <IssueRow
-              key={issue.id}
-              issue={issue}
-              projectLanguage={projectIdToLanguage[issue.projectId]}
-            />
-          ))}
-        </tbody>
-      </table>
-      <div className={styles.paginationContainer}>
-        <div>
-          <button
-            className={styles.paginationButton}
-            onClick={() => navigateToPage(page - 1)}
-            disabled={page === 1}
-          >
-            Previous
-          </button>
-          <button
-            className={styles.paginationButton}
-            onClick={() => navigateToPage(page + 1)}
-            disabled={page === meta?.totalPages}
-          >
-            Next
-          </button>
-        </div>
-        <div className={styles.pageInfo}>
-          Page <span className={styles.pageNumber}>{meta?.currentPage}</span> of{" "}
-          <span className={styles.pageNumber}>{meta?.totalPages}</span>
+    <>
+      <div className={styles.filtersContainer}>
+        <UIButton
+          size={ButtonSize.large}
+          color={ButtonColor.primary}
+          iconSrc={"/icons/issues-checkmark.svg"}
+          iconStyle={ButtonIconType.leading}
+        >
+          Resolve selected issues
+        </UIButton>
+        <div></div>
+        {/* <UISelect title="Project" options={[]} />
+        <UISelect title="Level" options={[]} />
+        <UIInput placeholder="Project Name" /> 
+      </div>*/}
+      </div>
+      <div className={styles.container}>
+        <table className={styles.table}>
+          <thead>
+            <tr className={styles.headerRow}>
+              <th className={styles.headerCell}>
+                <UICheckbox disabled boxSize={CheckboxSize.small}>
+                  Issue
+                </UICheckbox>
+              </th>
+              <th className={styles.headerCell}>Level</th>
+              <th className={styles.headerCell}>Events</th>
+              <th className={styles.headerCell}>Users</th>
+            </tr>
+          </thead>
+          <tbody>
+            {(items || []).map((issue) => (
+              <IssueRow
+                key={issue.id}
+                issue={issue}
+                projectLanguage={projectIdToLanguage[issue.projectId]}
+              />
+            ))}
+          </tbody>
+        </table>
+        <div className={styles.paginationContainer}>
+          <div>
+            <button
+              className={styles.paginationButton}
+              onClick={() => navigateToPage(page - 1)}
+              disabled={page === 1}
+            >
+              Previous
+            </button>
+            <button
+              className={styles.paginationButton}
+              onClick={() => navigateToPage(page + 1)}
+              disabled={page === meta?.totalPages}
+            >
+              Next
+            </button>
+          </div>
+          <div className={styles.pageInfo}>
+            Page <span className={styles.pageNumber}>{meta?.currentPage}</span>{" "}
+            of <span className={styles.pageNumber}>{meta?.totalPages}</span>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
