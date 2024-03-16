@@ -91,7 +91,7 @@ export function UICheckbox({
 
   return (
     <div className={checkBoxClassNames}>
-      <input type="checkbox" disabled={props.disabled} />
+      <input type="checkbox" />
       <div
         className={[
           styles.checkMarkWrapper,

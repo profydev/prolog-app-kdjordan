@@ -69,9 +69,7 @@ export function IssueList() {
           <thead>
             <tr className={styles.headerRow}>
               <th className={styles.headerCell}>
-                <UICheckbox disabled boxSize={CheckboxSize.small}>
-                  Issue
-                </UICheckbox>
+                <UICheckbox boxSize={CheckboxSize.small}>Issue</UICheckbox>
               </th>
               <th className={styles.headerCell}>Level</th>
               <th className={styles.headerCell}>Events</th>
