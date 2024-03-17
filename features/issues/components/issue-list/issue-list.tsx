@@ -84,7 +84,7 @@ export function IssueList() {
         <div>
           <div>
             <UISelect
-              title="Issue Type"
+              placeholder="Issue Type"
               options={["Resolved", "Unresolved"]}
               value={selectedIssueType}
               onChange={handleIssueTypeChange}
@@ -93,12 +93,11 @@ export function IssueList() {
           </div>
           <div>
             <UISelect
-              title="Level"
+              placeholder="Level"
               options={["Error", "Warning", "Info"]}
               value={selectedLevel}
               onChange={handleLevelChange}
               icon={false}
-              // errorMssg="error"
               label="Label"
               hint="Hint"
             />

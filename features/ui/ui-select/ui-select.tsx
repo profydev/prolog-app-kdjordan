@@ -3,9 +3,10 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { capitalize } from "lodash";
 import Icon from "../icon/icon";
+import classNames from "classnames";
 
 export type UISelectProps = {
-  title: string;
+  placeholder: string;
   hint?: string;
   label?: string;
   options?: string[];
@@ -18,12 +19,11 @@ export type UISelectProps = {
 };
 
 export function UISelect({
-  title,
+  placeholder,
   label,
   hint,
   options,
   icon,
-  disabled,
   errorMssg,
   iconSrc,
   onChange,
@@ -61,13 +61,17 @@ export function UISelect({
     setIsOpen(!isOpen);
   }
 
+  const buttonClassNames = classNames(
+    styles.customSelectButton,
+    errorMssg ? styles.buttonError : "",
+  );
+
   return (
     <div className={styles.customSelect}>
       {label && <div className={styles.label}>{capitalize(label)}</div>}
       <button
-        className={styles.customSelectButton}
+        className={buttonClassNames}
         onClick={() => setIsOpen(!isOpen)}
-        disabled={disabled}
         {...props}
       >
         <div className={selectedOption !== "" ? styles.selectedOption : ""}>
@@ -81,12 +85,13 @@ export function UISelect({
               direction="right"
             />
           )}
-          {selectedOption !== "" ? selectedOption : title}
+          <span
+            style={{ color: selectedOption !== "" ? "#101828" : "#667085" }}
+          >
+            {selectedOption !== "" ? selectedOption : placeholder}
+          </span>
         </div>
-        <div
-          className={styles.carat}
-          style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }}
-        >
+        <div style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }}>
           <Icon src="/icons/carat.svg" height={12} width={8} alt="person" />
         </div>
       </button>

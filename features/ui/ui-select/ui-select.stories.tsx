@@ -19,35 +19,35 @@ const testOptions: string[] = [
 ];
 
 const Template: StoryFn<typeof UISelect> = ({
-  title,
+  placeholder,
   label,
   hint,
   icon,
+  iconSrc,
   options,
-  disabled,
   errorMssg,
+  ...props
 }: UISelectProps) => (
   <div style={{ margin: "2rem" }}>
-    w
     <UISelect
-      title={title}
+      placeholder={placeholder}
       label={label}
       hint={hint}
       icon={icon}
+      iconSrc={iconSrc}
       options={options}
-      disabled={disabled}
       errorMssg={errorMssg}
+      {...props}
     ></UISelect>
   </div>
 );
 
 export const Primary = Template.bind({});
 Primary.args = {
-  title: "Select Team Member",
+  placeholder: "Select Team Member",
   label: "Tean Member",
   options: testOptions,
   icon: false,
-  disabled: false,
 };
 Primary.parameters = {
   viewMode: "docs",
