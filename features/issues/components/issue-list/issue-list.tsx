@@ -3,6 +3,7 @@ import { ProjectLanguage } from "@api/projects.types";
 import { useGetProjects } from "@features/projects";
 import { useGetIssues } from "../../api/use-get-issues";
 import { IssueRow } from "./issue-row";
+import { useState } from "react";
 import styles from "./issue-list.module.scss";
 import {
   ButtonIconType,
@@ -10,7 +11,9 @@ import {
   ButtonColor,
 } from "../../../ui/ui-button/ui-button.types";
 import { UICheckbox, CheckboxSize } from "../../../ui/ui-checkbox/ui-checkbox";
+import { UISelect } from "../../../ui/ui-select/ui-select";
 import { UIButton } from "../../../ui/ui-button";
+import { UIInput } from "../../../ui/ui-input/ui-input";
 
 export function IssueList() {
   const router = useRouter();
@@ -23,6 +26,10 @@ export function IssueList() {
 
   const issuesPage = useGetIssues(page);
   const projects = useGetProjects();
+
+  const [selectedIssueType, setSelectedIssueType] = useState(""); // State to hold the selected value
+  const [selectedLevel, setSelectedLevel] = useState(""); // State to hold the selected value
+  const [selectedSearch, setSelectedSearch] = useState(""); // State to hold the selected value
 
   if (projects.isLoading || issuesPage.isLoading) {
     return <div>Loading</div>;
@@ -47,6 +54,21 @@ export function IssueList() {
   );
   const { items, meta } = issuesPage.data || {};
 
+  // Function to update the selected value
+  const handleIssueTypeChange = (selectedValue: string) => {
+    console.log(selectedValue);
+    setSelectedIssueType(selectedValue);
+  };
+  const handleLevelChange = (selectedLevel: string) => {
+    console.log(selectedLevel);
+    setSelectedLevel(selectedLevel);
+  };
+
+  const handleSearchChange = (selectedSearch: string) => {
+    console.log(selectedSearch);
+    setSelectedSearch(selectedSearch);
+  };
+
   return (
     <>
       <div className={styles.filtersContainer}>
@@ -55,15 +77,43 @@ export function IssueList() {
           color={ButtonColor.primary}
           iconSrc={"/icons/issues-checkmark.svg"}
           iconStyle={ButtonIconType.leading}
+          alt={"Resolve selected issues"}
         >
           Resolve selected issues
         </UIButton>
-        <div></div>
-        {/* <UISelect title="Project" options={[]} />
-        <UISelect title="Level" options={[]} />
-        <UIInput placeholder="Project Name" /> 
-      </div>*/}
+        <div>
+          <div>
+            <UISelect
+              title="Issue Type"
+              options={["Resolved", "Unresolved"]}
+              value={selectedIssueType}
+              onChange={handleIssueTypeChange}
+              icon={false}
+            />
+          </div>
+          <div>
+            <UISelect
+              title="Level"
+              options={["Error", "Warning", "Info"]}
+              value={selectedLevel}
+              onChange={handleLevelChange}
+              icon={false}
+              // errorMssg="error"
+              label="Label"
+              hint="Hint"
+            />
+          </div>
+          <div style={{ marginBottom: "1rem" }}>
+            <UIInput
+              placeholder="Project Name"
+              iconSrc="/icons/magnify.svg"
+              value={selectedSearch}
+              onChange={handleSearchChange}
+            />
+          </div>
+        </div>
       </div>
+
       <div className={styles.container}>
         <table className={styles.table}>
           <thead>

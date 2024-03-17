@@ -1,33 +1,53 @@
 import styles from "./ui-select.module.scss";
+import { useEffect } from "react";
 import { useState } from "react";
 import { capitalize } from "lodash";
 import Icon from "../icon/icon";
 
-type UISelectProps = {
+export type UISelectProps = {
   title: string;
   hint?: string;
   label?: string;
+  options?: string[];
   icon: boolean;
-  options: string[];
+  iconSrc?: string;
   disabled?: boolean;
-  errorMssg: string;
+  errorMssg?: string;
+  value?: string;
+  onChange?: (value: string) => void;
 };
 
-export default function UISelect({
+export function UISelect({
   title,
-  icon,
   label,
   hint,
   options,
+  icon,
   disabled,
   errorMssg,
+  iconSrc,
+  onChange,
+  ...props
 }: UISelectProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
 
+  useEffect(() => {
+    // Update the selected value in the parent component
+    if (onChange) {
+      onChange(selectedOption);
+    }
+  }, [onChange, selectedOption]);
+
   function setSelection(e: React.MouseEvent<HTMLLIElement>) {
     e.preventDefault();
     let selected = (e.target as HTMLLIElement).textContent as string;
+
+    if (selected === selectedOption) {
+      setIsOpen(!isOpen);
+      setSelectedOption("");
+      return;
+    }
 
     if (icon) {
       selected = selected.replace(
@@ -48,10 +68,18 @@ export default function UISelect({
         className={styles.customSelectButton}
         onClick={() => setIsOpen(!isOpen)}
         disabled={disabled}
+        {...props}
       >
         <div className={selectedOption !== "" ? styles.selectedOption : ""}>
           {icon && (
-            <Icon src="/icons/person.svg" alt="person" height={16} width={18} />
+            <Icon
+              src={iconSrc || "/icons/person.svg"}
+              alt="person"
+              height={16}
+              width={18}
+              iconPadding={8}
+              direction="right"
+            />
           )}
           {selectedOption !== "" ? selectedOption : title}
         </div>
@@ -62,26 +90,31 @@ export default function UISelect({
           <Icon src="/icons/carat.svg" height={12} width={8} alt="person" />
         </div>
       </button>
-      {hint && errorMssg == undefined && (
+      {hint && !errorMssg && (
         <div className={styles.hint}>{capitalize(hint)}</div>
       )}
       {errorMssg && <div className={styles.error}>{capitalize(errorMssg)}</div>}
       {isOpen && (
         <div className={styles.customOptionWrapper}>
           <ul>
-            {options.map((option) => (
+            {options?.map((option) => (
               <li
                 key={option}
                 className={styles.customOption}
                 onClick={setSelection}
+                style={{
+                  backgroundColor: selectedOption === option ? "#FCFAFF" : "",
+                }}
               >
-                {icon == true ? (
+                {icon ? (
                   <span className={styles.customOptionIconWrapper}>
                     <Icon
-                      src="/icons/person.svg"
+                      src={iconSrc || "/icons/person.svg"}
                       alt="person"
                       height={20}
                       width={20}
+                      iconPadding={8}
+                      direction="right"
                     />
                     {option}
                   </span>

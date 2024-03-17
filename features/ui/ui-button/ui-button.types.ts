@@ -30,4 +30,5 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   color?: ButtonColor;
   iconSrc?: string;
   iconStyle?: ButtonIconType;
+  alt?: string;
 }

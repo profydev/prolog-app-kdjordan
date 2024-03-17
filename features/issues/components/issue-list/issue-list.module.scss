@@ -63,12 +63,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: space.$s5;
+  margin-bottom: space.$s3;
 
   & > div {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: space.$s5;
+    gap: space.$s4;
   }
 }

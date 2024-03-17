@@ -1,16 +1,18 @@
+import { useState, useEffect } from "react";
 import styles from "./ui-input.module.scss";
-import { useState } from "react";
 import { capitalize } from "lodash";
 import Icon from "../icon/icon";
 
-type UIInputProps = {
+export type UIInputProps = {
   hint?: string;
   label?: string;
-  icon: boolean;
+  iconSrc?: string;
   disabled?: boolean;
   errorMssg?: string;
   placeholder: string;
-  error: boolean;
+  error?: boolean;
+  value?: string;
+  onChange?: (value: string) => void;
 };
 
 export function UIInput({
@@ -18,11 +20,19 @@ export function UIInput({
   hint,
   errorMssg,
   placeholder,
-  icon,
   disabled,
   error,
+  iconSrc,
+  onChange,
 }: UIInputProps) {
-  const [inputValue, setInputValue] = useState("");
+  const [searchInputValue, setSearchInputValue] = useState("");
+
+  useEffect(() => {
+    // Update the selected value in the parent component
+    if (onChange) {
+      onChange(searchInputValue);
+    }
+  }, [onChange, searchInputValue]);
 
   return (
     <div className={styles.inputWrapper}>
@@ -33,20 +43,20 @@ export function UIInput({
         className={styles.inputContainer}
         data-has-error={errorMssg ? "true" : "false"}
       >
-        {icon === true ? (
+        {iconSrc ? (
           <span>
             <Icon
-              alt="Mail icon"
+              alt="Input icon"
               height={16}
               width={16}
-              src="/icons/mail.svg"
+              src={iconSrc || "/icons/mail.svg"}
             />
             <input
               type="text"
               id="ui-input"
               placeholder={placeholder}
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
+              value={searchInputValue}
+              onChange={(e) => setSearchInputValue(e.target.value)}
               disabled={disabled}
             />
           </span>
@@ -55,14 +65,14 @@ export function UIInput({
             type="text"
             id="ui-input"
             placeholder={placeholder}
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
+            value={searchInputValue}
+            onChange={(e) => setSearchInputValue(e.target.value)}
             disabled={disabled}
           />
         )}
         {error && (
           <Icon
-            src="/icons/exclaim.svg"
+            src="/icons/error.svg"
             alt="Error icon"
             height={20}
             width={20}

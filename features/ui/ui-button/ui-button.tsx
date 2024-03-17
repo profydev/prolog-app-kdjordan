@@ -6,7 +6,7 @@ import {
 } from "./ui-button.types";
 import styles from "./ui-button.module.scss";
 import classNames from "classnames";
-// import Icon from "../icon/icon";
+import Icon from "../icon/icon";
 
 export function UIButton({
   children,
@@ -14,6 +14,7 @@ export function UIButton({
   color = ButtonColor.primary,
   iconSrc,
   iconStyle = ButtonIconType.none,
+  alt = "button",
   ...props
 }: ButtonProps) {
   // Define the class names based on the props
@@ -29,8 +30,7 @@ export function UIButton({
     <button {...props} className={buttonClassNames}>
       <span>{children}</span>
       {iconSrc && iconStyle !== ButtonIconType.none && (
-        //eslint-disable-next-line @next/next/no-img-element
-        <img src={iconSrc} className={styles[iconStyle]} alt="button icon" />
+        <Icon src={iconSrc} alt={alt} height={14} width={14} />
       )}
     </button>
   );

@@ -43,7 +43,6 @@ export function UICheckbox({
     ? (iconPadding = IconPadding.small)
     : (iconPadding = IconPadding.medium);
 
-  console.log(props.disabled);
   const handleCheckboxClick = () => {
     setClickCount((clickCount + 1) % 3);
   };
@@ -58,6 +57,7 @@ export function UICheckbox({
             height={iconSize}
             width={iconSize}
             iconPadding={iconPadding}
+            direction="left"
           />
         );
       case 2:
@@ -68,6 +68,7 @@ export function UICheckbox({
             height={iconSize}
             width={iconSize}
             iconPadding={iconPadding}
+            direction="left"
           />
         );
       default:
@@ -78,6 +79,7 @@ export function UICheckbox({
             height={iconSize}
             width={iconSize}
             iconPadding={iconPadding}
+            direction="left"
           />
         );
     }

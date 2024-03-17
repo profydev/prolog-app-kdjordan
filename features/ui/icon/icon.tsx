@@ -1,20 +1,22 @@
 import Image from "next/image";
-// import cx from "classnames";
-
+import { capitalize } from "lodash";
 type IconInput = {
   src: string;
   alt: string;
-  height: number;
-  width: number;
+  height?: number;
+  width?: number;
   iconPadding?: number;
+  cssClass?: string;
+  direction?: string;
 };
 
 export default function Icon({
   src,
   alt,
-  height,
-  width,
+  height = 14,
+  width = 14,
   iconPadding,
+  direction,
 }: IconInput) {
   return (
     <Image
@@ -22,7 +24,7 @@ export default function Icon({
       alt={alt}
       width={width}
       height={height}
-      style={{ marginLeft: `${iconPadding}px` }}
+      style={{ [`margin${capitalize(direction)}`]: `${iconPadding}px` }}
     />
   );
 }
