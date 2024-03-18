@@ -98,16 +98,16 @@ export function IssueList() {
               value={selectedLevel}
               onChange={handleLevelChange}
               icon={false}
-              label="Label"
-              hint="Hint"
+              // label="Project Name"
+              // hint="This is a hint"
             />
           </div>
-          <div style={{ marginBottom: "1rem" }}>
+          <div>
             <UIInput
               placeholder="Project Name"
-              iconSrc="/icons/magnify.svg"
               value={selectedSearch}
               onChange={handleSearchChange}
+              iconSrc="/icons/magnify.svg"
             />
           </div>
         </div>

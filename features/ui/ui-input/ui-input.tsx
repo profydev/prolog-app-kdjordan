@@ -10,7 +10,6 @@ export type UIInputProps = {
   disabled?: boolean;
   errorMssg?: string;
   placeholder: string;
-  error?: boolean;
   value?: string;
   onChange?: (value: string) => void;
 };
@@ -21,9 +20,9 @@ export function UIInput({
   errorMssg,
   placeholder,
   disabled,
-  error,
   iconSrc,
   onChange,
+  ...props
 }: UIInputProps) {
   const [searchInputValue, setSearchInputValue] = useState("");
 
@@ -67,10 +66,10 @@ export function UIInput({
             placeholder={placeholder}
             value={searchInputValue}
             onChange={(e) => setSearchInputValue(e.target.value)}
-            disabled={disabled}
+            {...props}
           />
         )}
-        {error && (
+        {errorMssg && (
           <Icon
             src="/icons/error.svg"
             alt="Error icon"
@@ -80,7 +79,9 @@ export function UIInput({
         )}
       </div>
       {errorMssg && <div className={styles.error}>{capitalize(errorMssg)}</div>}
-      {!error && hint && <div className={styles.hint}>{capitalize(hint)}</div>}
+      {!errorMssg && hint && (
+        <div className={styles.hint}>{capitalize(hint)}</div>
+      )}
     </div>
   );
 }

@@ -15,8 +15,6 @@ const Template: StoryFn<typeof UIInput> = ({
   hint,
   errorMssg,
   placeholder,
-  disabled,
-  error,
 }: UIInputProps) => (
   <div style={{ margin: "2rem" }}>
     <UIInput
@@ -24,8 +22,6 @@ const Template: StoryFn<typeof UIInput> = ({
       hint={hint}
       placeholder={placeholder}
       errorMssg={errorMssg}
-      disabled={disabled}
-      error={error}
     />
   </div>
 );
