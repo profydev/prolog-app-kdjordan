@@ -6,7 +6,7 @@ import Icon from "../icon/icon";
 import classNames from "classnames";
 
 export type UISelectProps = {
-  placeholder: string;
+  placeholder?: string;
   hint?: string;
   label?: string;
   options?: string[];

@@ -4,6 +4,7 @@ import { ProjectLanguage } from "@api/projects.types";
 import { IssueLevel } from "@api/issues.types";
 import type { Issue } from "@api/issues.types";
 import styles from "./issue-row.module.scss";
+import { UICheckbox, CheckboxSize } from "../../../ui/ui-checkbox/ui-checkbox";
 
 type IssueRowProps = {
   projectLanguage: ProjectLanguage;
@@ -23,6 +24,9 @@ export function IssueRow({ projectLanguage, issue }: IssueRowProps) {
   return (
     <tr className={styles.row}>
       <td className={styles.issueCell}>
+        <div style={{ marginRight: "1rem" }}>
+          <UICheckbox boxSize={CheckboxSize.small} />
+        </div>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           className={styles.languageIcon}

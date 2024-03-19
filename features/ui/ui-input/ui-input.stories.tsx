@@ -15,6 +15,8 @@ const Template: StoryFn<typeof UIInput> = ({
   hint,
   errorMssg,
   placeholder,
+  icon,
+  ...props
 }: UIInputProps) => (
   <div style={{ margin: "2rem" }}>
     <UIInput
@@ -22,14 +24,16 @@ const Template: StoryFn<typeof UIInput> = ({
       hint={hint}
       placeholder={placeholder}
       errorMssg={errorMssg}
+      icon={icon}
+      {...props}
     />
   </div>
 );
 
-export const PrimaryEmpty = Template.bind({});
-PrimaryEmpty.args = {
+export const Primary = Template.bind({});
+Primary.args = {
   placeholder: "olivia@profy.com",
 };
-PrimaryEmpty.parameters = {
+Primary.parameters = {
   viewMode: "docs",
 };

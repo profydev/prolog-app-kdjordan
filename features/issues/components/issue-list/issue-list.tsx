@@ -3,7 +3,7 @@ import { ProjectLanguage } from "@api/projects.types";
 import { useGetProjects } from "@features/projects";
 import { useGetIssues } from "../../api/use-get-issues";
 import { IssueRow } from "./issue-row";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./issue-list.module.scss";
 import {
   ButtonIconType,
@@ -14,6 +14,7 @@ import { UICheckbox, CheckboxSize } from "../../../ui/ui-checkbox/ui-checkbox";
 import { UISelect } from "../../../ui/ui-select/ui-select";
 import { UIButton } from "../../../ui/ui-button";
 import { UIInput } from "../../../ui/ui-input/ui-input";
+import { Issue } from "@api/issues.types";
 
 export function IssueList() {
   const router = useRouter();
@@ -27,9 +28,88 @@ export function IssueList() {
   const issuesPage = useGetIssues(page);
   const projects = useGetProjects();
 
-  const [selectedIssueType, setSelectedIssueType] = useState(""); // State to hold the selected value
-  const [selectedLevel, setSelectedLevel] = useState(""); // State to hold the selected value
-  const [selectedSearch, setSelectedSearch] = useState(""); // State to hold the selected value
+  const [selectedIssueType, setSelectedIssueType] = useState(""); // State to hold the selected issue type
+  const [selectedLevel, setSelectedLevel] = useState(""); // State to hold the selected level
+  const [selectedSearch, setSelectedSearch] = useState(""); // State to hold the selected search term
+
+  // const initialFiltersFromLocalStorage = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('filters') || '{}') : {};
+  // const [selectedIssueType, setSelectedIssueType] = useState(initialFiltersFromLocalStorage.selectedIssueType || "");
+  // const [selectedLevel, setSelectedLevel] = useState(initialFiltersFromLocalStorage.selectedLevel || "");
+  // const [selectedSearch, setSelectedSearch] = useState(initialFiltersFromLocalStorage.selectedSearch || "");
+
+  useEffect(() => {
+    // Retrieve filter values from localStorage on component mount
+    const filtersFromLocalStorage = JSON.parse(
+      localStorage.getItem("filters") || "{}",
+    );
+    console.log(filtersFromLocalStorage);
+    setSelectedIssueType(filtersFromLocalStorage.selectedIssueType);
+    setSelectedLevel(filtersFromLocalStorage.selectedLevel);
+    setSelectedSearch(filtersFromLocalStorage.selectedSearch);
+    console.log("running");
+  }, []);
+  console.log("***", selectedLevel);
+
+  // const setLocalStorage = useCallback(() => {
+  //   localStorage.setItem('filters', JSON.stringify({
+  //     selectedIssueType,
+  //     selectedLevel,
+  //     selectedSearch,
+  //   }));
+  // }, [selectedIssueType, selectedLevel, selectedSearch]);
+
+  // useEffect(() => {
+  //   // Update localStorage whenever the state changes
+  //   setLocalStorage();
+  // }, [setLocalStorage]);
+
+  const filterIssues = (issue: Issue): boolean => {
+    if (selectedIssueType && issue.status !== selectedIssueType) return false;
+    if (selectedLevel && issue.level !== selectedLevel.toLocaleLowerCase())
+      return false;
+    if (
+      selectedSearch &&
+      !issue.name.toLowerCase().includes(selectedSearch.toLowerCase())
+    )
+      return false;
+    return true;
+  };
+
+  const handleIssueTypeChange = (selectedValue: string) => {
+    switch (selectedValue) {
+      case "Resolved":
+        setSelectedIssueType("closed");
+        break;
+      case "Unresolved":
+        setSelectedIssueType("open");
+        break;
+      case "":
+        setSelectedIssueType("");
+        break;
+      default:
+        break;
+    }
+    // setLocalStorage();
+  };
+  const handleLevelChange = (selectedLevel: string) => {
+    // setLocalStorage();
+    setSelectedLevel(selectedLevel);
+  };
+
+  const handleSearchChange = (selectedSearch: string) => {
+    console.log("seetinglocal storage here");
+    // setLocalStorage();
+    setSelectedSearch(selectedSearch);
+  };
+
+  // const setLocalStorage = () => {
+  //   console.log('seetinglocal storage')
+  //   localStorage.setItem('filters', JSON.stringify({
+  //     selectedIssueType,
+  //     selectedLevel,
+  //     selectedSearch,
+  //   }));
+  // }
 
   if (projects.isLoading || issuesPage.isLoading) {
     return <div>Loading</div>;
@@ -54,23 +134,11 @@ export function IssueList() {
   );
   const { items, meta } = issuesPage.data || {};
 
-  // Function to update the selected value
-  const handleIssueTypeChange = (selectedValue: string) => {
-    console.log(selectedValue);
-    setSelectedIssueType(selectedValue);
-  };
-  const handleLevelChange = (selectedLevel: string) => {
-    console.log(selectedLevel);
-    setSelectedLevel(selectedLevel);
-  };
-
-  const handleSearchChange = (selectedSearch: string) => {
-    console.log(selectedSearch);
-    setSelectedSearch(selectedSearch);
-  };
-
   return (
     <>
+      {selectedLevel}
+      <br />
+      {selectedIssueType}
       <div className={styles.filtersContainer}>
         <UIButton
           size={ButtonSize.large}
@@ -82,34 +150,27 @@ export function IssueList() {
           Resolve selected issues
         </UIButton>
         <div>
-          <div>
-            <UISelect
-              placeholder="Issue Type"
-              options={["Resolved", "Unresolved"]}
-              value={selectedIssueType}
-              onChange={handleIssueTypeChange}
-              icon={false}
-            />
-          </div>
-          <div>
-            <UISelect
-              placeholder="Level"
-              options={["Error", "Warning", "Info"]}
-              value={selectedLevel}
-              onChange={handleLevelChange}
-              icon={false}
-              // label="Project Name"
-              // hint="This is a hint"
-            />
-          </div>
-          <div>
-            <UIInput
-              placeholder="Project Name"
-              value={selectedSearch}
-              onChange={handleSearchChange}
-              iconSrc="/icons/magnify.svg"
-            />
-          </div>
+          <UISelect
+            placeholder="Issue Type"
+            options={["Resolved", "Unresolved"]}
+            value={selectedIssueType}
+            onChange={handleIssueTypeChange}
+            icon={false}
+          />
+          <UISelect
+            placeholder="Level"
+            options={["Error", "Warning", "Info"]}
+            value={selectedLevel}
+            onChange={handleLevelChange}
+            icon={false}
+          />
+          <UIInput
+            placeholder="Project Name"
+            value={selectedSearch}
+            onChange={handleSearchChange}
+            icon={true}
+            iconSrc="/icons/magnify.svg"
+          />
         </div>
       </div>
 
@@ -126,7 +187,7 @@ export function IssueList() {
             </tr>
           </thead>
           <tbody>
-            {(items || []).map((issue) => (
+            {(items || []).filter(filterIssues).map((issue) => (
               <IssueRow
                 key={issue.id}
                 issue={issue}

@@ -6,10 +6,11 @@ import Icon from "../icon/icon";
 export type UIInputProps = {
   hint?: string;
   label?: string;
+  icon?: boolean;
   iconSrc?: string;
-  disabled?: boolean;
   errorMssg?: string;
-  placeholder: string;
+  placeholder?: string;
+  disabled?: boolean;
   value?: string;
   onChange?: (value: string) => void;
 };
@@ -19,8 +20,8 @@ export function UIInput({
   hint,
   errorMssg,
   placeholder,
-  disabled,
   iconSrc,
+  icon,
   onChange,
   ...props
 }: UIInputProps) {
@@ -42,7 +43,7 @@ export function UIInput({
         className={styles.inputContainer}
         data-has-error={errorMssg ? "true" : "false"}
       >
-        {iconSrc ? (
+        {icon ? (
           <span>
             <Icon
               alt="Input icon"
@@ -56,7 +57,7 @@ export function UIInput({
               placeholder={placeholder}
               value={searchInputValue}
               onChange={(e) => setSearchInputValue(e.target.value)}
-              disabled={disabled}
+              {...props}
             />
           </span>
         ) : (
